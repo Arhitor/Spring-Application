@@ -1,6 +1,8 @@
-package com.spring.app;
+package com.spring.app.service;
 
 import com.mongodb.MongoWriteException;
+import com.spring.app.models.Book;
+import com.spring.app.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -25,7 +27,6 @@ public class BookService {
 
     public Book add(Book book) {
         book.setAddedAt(LocalDateTime.now());
-//        book.setFinishedAt(Date.valueOf(book.getFinishedAt().toString()));
         try {
             return repository.insert(book);
         }
@@ -33,7 +34,6 @@ public class BookService {
             return null;
         }
     }
-
 
     public Book update(Book book) {
         return repository.save(book);
